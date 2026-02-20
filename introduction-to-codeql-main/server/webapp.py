@@ -14,3 +14,13 @@ database_uri = os.environ.get('SQLITE_URI', ':memory:')
 
 database = sqlite3.connect(database_uri, check_same_thread=False)
 cursor = database.cursor()
+# CÓDIGO INSEGURO PARA PROBAR CODEQL
+import sqlite3
+
+def buscar_usuario(username):
+    db = sqlite3.connect("database.db")
+    cursor = db.cursor()
+    # Esta línea es peligrosa porque concatena la entrada del usuario directamente
+    query = "SELECT * FROM users WHERE username = '" + username + "'"
+    cursor.execute(query)
+    return cursor.fetchone()
