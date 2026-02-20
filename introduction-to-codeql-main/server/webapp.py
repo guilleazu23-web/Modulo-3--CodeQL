@@ -24,3 +24,4 @@ def buscar_usuario(username):
     query = "SELECT * FROM users WHERE username = '" + username + "'"
     cursor.execute(query)
     return cursor.fetchone()
+buscar_usuario("admin")
